@@ -42,6 +42,26 @@
             android:layout_gravity="center_horizontal"
             />
 
+
+        <EditText
+            android:id="@+id/Sname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@android:drawable/ic_menu_my_calendar"
+            android:drawablePadding="@dimen/_8sdp"
+            android:drawableTint="@color/red"
+            android:hint="Full Name"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:maxLength="30"
+            android:minHeight="48dp"
+            android:paddingStart="@dimen/_2sdp"
+            android:paddingBottom="@dimen/_8sdp"
+            android:textColorHint="#808080"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/_15ssp" />
+
         <EditText
             android:id="@+id/Semail"
             android:layout_width="match_parent"
@@ -60,6 +80,25 @@
             android:maxLength="30"
             android:paddingStart="@dimen/_2sdp"
             android:paddingBottom="@dimen/_8sdp" />
+
+        <EditText
+            android:id="@+id/Sphone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@android:drawable/stat_sys_phone_call"
+            android:drawablePadding="@dimen/_8sdp"
+            android:drawableTint="@color/red"
+            android:hint="Phone Number"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:maxLength="30"
+            android:minHeight="48dp"
+            android:paddingStart="@dimen/_2sdp"
+            android:paddingBottom="@dimen/_8sdp"
+            android:textColorHint="#808080"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/_15ssp" />
 
         <EditText
             android:id="@+id/Spassword"

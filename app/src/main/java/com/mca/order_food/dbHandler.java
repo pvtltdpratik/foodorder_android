@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 
 public class dbHandler extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 123;
+    private static final int DATABASE_VERSION = 124;
     public dbHandler(Context context) {
         super(context, "mydb.db", null, DATABASE_VERSION);
     }
@@ -23,7 +23,7 @@ public class dbHandler extends SQLiteOpenHelper {
         String q = "create table orders (id integer primary key autoincrement , foodImage int , foodname text , fooddes text , foodPrice int , userName text , phoneNumber text)";
         sqLiteDatabase.execSQL(q);
 
-        String n = "create table regis (id integer primary key autoincrement , email text , password text)";
+        String n = "create table regis (id integer primary key autoincrement , fullname text , phone text , email text , password text)";
         sqLiteDatabase.execSQL(n);
 
     }
@@ -119,9 +119,11 @@ public class dbHandler extends SQLiteOpenHelper {
 
 
 
-    public boolean insert_registration_detail(String email , String password){
+    public boolean insert_registration_detail(String email , String fullname, String phone,String password){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
+        values.put("fullname",fullname);
+        values.put("phone",phone);
         values.put("email",email);
         values.put("password",password);
         long r = sqLiteDatabase.insert("regis",null,values);
@@ -153,6 +155,13 @@ public class dbHandler extends SQLiteOpenHelper {
         else {
             return false;
         }
+    }
+
+//    define method to get the user details
+    public Cursor getUserDetails(String email) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM regis WHERE email=?", new String[]{email});
+        return cursor;
     }
 
 }

@@ -4,6 +4,7 @@ package com.mca.order_food;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -29,7 +30,16 @@ public class detail extends AppCompatActivity {
         EditText phonenumber = findViewById(R.id.userPhone);
         Button submit = findViewById(R.id.submit_btn);
         dbHandler db = new dbHandler(this);
-        
+//        fetch the data of user from shared preferece and add to edit text username and phonenumber
+        SharedPreferences sharedPreferences = getSharedPreferences("login",MODE_PRIVATE);
+        String email = sharedPreferences.getString("email",null);
+        Cursor cursor1 = db.getUserDetails(email);
+        if (cursor1 != null && cursor1.moveToFirst()) {
+            String name = cursor1.getString(1);
+            String phone = cursor1.getString(2);
+            username.setText(name);
+            phonenumber.setText(phone);
+        }
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         getSupportActionBar().setTitle("Order");
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.WHITE));

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -55,9 +56,17 @@ public class login extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         finish();
 
+                        Cursor c = db.getUserDetails(email);
                         SharedPreferences sharedPreferences = getSharedPreferences("login",MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("email","");
+                        editor.putString("email",email);
+//                       add details of user to shared preferences
+                        if (c.moveToFirst()){
+                            String name = c.getString(0);
+                            String phone = c.getString(1);
+                            editor.putString("name",name);
+                            editor.putString("phone",phone);
+                        }
                         editor.apply();
                     }
                     else {

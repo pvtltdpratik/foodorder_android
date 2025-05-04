@@ -29,6 +29,8 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                String fullname = binding.Sname.getText().toString().trim();
+                String phone = binding.Sphone.getText().toString().trim();
                 String mail = binding.Semail.getText().toString().trim();
                 String pass = binding.Spassword.getText().toString().trim();
                 String confirmPass = binding.SconfirmPassword.getText().toString().trim();
@@ -39,6 +41,13 @@ public class SignUp extends AppCompatActivity {
                 }
                 else if (TextUtils.isEmpty(pass)){
                     Toast.makeText(SignUp.this, "Enter Password", Toast.LENGTH_SHORT).show();
+                }
+                else if (TextUtils.isEmpty(fullname))
+                {
+                    Toast.makeText(SignUp.this, "Enter Full Name", Toast.LENGTH_SHORT).show();
+                }
+                else if (TextUtils.isEmpty(phone)){
+                    Toast.makeText(SignUp.this, "Enter Phone Number", Toast.LENGTH_SHORT).show();
                 }
                 else if (TextUtils.isEmpty(confirmPass)){
                     Toast.makeText(SignUp.this, "Enter Confirm Password", Toast.LENGTH_SHORT).show();
@@ -55,7 +64,7 @@ public class SignUp extends AppCompatActivity {
                             Toast.makeText(SignUp.this, "Email is already Registered.", Toast.LENGTH_SHORT).show();
                         }
                         else {
-                            boolean isRegistered = db.insert_registration_detail(mail,pass);
+                            boolean isRegistered = db.insert_registration_detail(mail,fullname,phone,pass);
                             if (isRegistered == true){
                                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
                                 Toast.makeText(SignUp.this, "Registered successfully", Toast.LENGTH_SHORT).show();
