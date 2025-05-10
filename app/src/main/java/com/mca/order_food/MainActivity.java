@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-         setTheme(R.style.Theme_FoodTEST1);
+        setTheme(R.style.Theme_FoodTEST1);
         setContentView(R.layout.activity_main);
 
         db = new dbHandler(this);

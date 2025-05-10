@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Foodzee</string>
+    <string name="app_name">Eatzee</string>
     <string name="food_des">Most famous chinese pizza is available with 20% discount.</string>
     <string name="already_have_an_account"><u>Create new account</u></string>
     <string name="already_acc"><u>Already have an account</u></string>
